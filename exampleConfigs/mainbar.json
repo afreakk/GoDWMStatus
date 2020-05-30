@@ -12,7 +12,6 @@
         {
             "name": "cpu",
             "cron": "@every 5s",
-            "color": "#928374",
             "bar_width": 5,
             "bar_filled": "▰",
             "bar_empty": "▱",
@@ -38,7 +37,6 @@
         },
         {
             "name": "pulseaudio",
-            "color": "#928374",
             "bar_width": 5,
             "bar_filled": "▰",
             "bar_empty": "▱",
@@ -48,7 +46,7 @@
             "name": "datetime",
             "sprintf": "[%s]",
             "datetime_format": "15:04 2/Jan",
-            "cron": "0 * * * * *"
+            "cron": "0 * * * *"
         }
     ]
 }
