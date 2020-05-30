@@ -5,16 +5,14 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/afreakk/go-i3"
-	"github.com/afreakk/i3statusbear/internal/activewindow"
-	"github.com/afreakk/i3statusbear/internal/command"
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/cpu"
-	"github.com/afreakk/i3statusbear/internal/datetime"
-	"github.com/afreakk/i3statusbear/internal/memory"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/pulseaudio"
-	"github.com/afreakk/i3statusbear/internal/readfile"
+	"github.com/afreakk/godwmstatus/internal/command"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/cpu"
+	"github.com/afreakk/godwmstatus/internal/datetime"
+	"github.com/afreakk/godwmstatus/internal/memory"
+	"github.com/afreakk/godwmstatus/internal/protocol"
+	"github.com/afreakk/godwmstatus/internal/pulseaudio"
+	"github.com/afreakk/godwmstatus/internal/readfile"
 	"github.com/robfig/cron"
 )
 
@@ -36,17 +34,6 @@ func main() {
 		panic(err)
 	}
 
-	if osArgsLen > 2 {
-		cfg.WMClient = os.Args[2]
-	}
-
-	// not implemented, havent really had the use for it
-	//go protocol.HandleInput()
-
-	if cfg.WMClient == "sway" {
-		i3.WMClient = i3.WMTypeSway
-	}
-
 	output := protocol.Output{}
 	err = output.Init(cfg)
 	if err != nil {
@@ -58,19 +45,17 @@ func main() {
 		var err error
 		switch module.Name {
 		case "datetime":
-			err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
+			_, err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
 		case "pulseaudio":
 			err = pulseaudio.Pulseaudio(&output, module)
 		case "readfile":
-			err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
+			_, err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
 		case "memory":
-			err = c.AddFunc(module.Cron, memory.Memory(&output, module))
+			_, err = c.AddFunc(module.Cron, memory.Memory(&output, module))
 		case "cpu":
-			err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
+			_, err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
 		case "command":
-			err = c.AddFunc(module.Cron, command.Command(&output, module))
-		case "activewindow":
-			activewindow.ActiveWindow(&output, module)
+			_, err = c.AddFunc(module.Cron, command.Command(&output, module))
 		}
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "\nError when initializing module: %s, \nerror: %s\n", module.Name, err.Error())

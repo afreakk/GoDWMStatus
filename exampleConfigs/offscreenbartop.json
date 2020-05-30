@@ -1,106 +1,59 @@
 {
-    "wmclient": "sway",
     "minimum_render_interval": "150ms",
-    "modules": [{
-        "name": "command",
-        "cron": "@every 30s",
-        "instance": "freespace_bigdisk",
-        "color": "#928374",
-        "min_width": 150,
-        "align": "left",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
-        "command_args": ["/mnt/bigdisk"],
-
-        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 30s",
-        "instance": "freespace_root",
-        "color": "#928374",
-        "min_width": 330,
-        "align": "left",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/diskSpace.sh",
-        "command_args": ["/"],
-
-        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 10s",
-        "instance": "bitcoin",
-        "color": "#928374",
-        "min_width": 100,
-        "align": "center",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
-        "command_args": ["bitcoin"],
-
-        "sprintf": "<b>₿</b> <span fgcolor='#d79921'>%s</span>",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 10s",
-        "instance": "bch",
-        "color": "#928374",
-        "min_width": 100,
-        "align": "center",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
-        "command_args": ["bitcoin-cash"],
-
-        "sprintf": "<b>bch</b> <span fgcolor='#d79921'>%s</span>",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 10s",
-        "instance": "ethereum",
-        "color": "#928374",
-        "min_width": 100,
-        "align": "center",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/cryptoprice.sh",
-        "command_args": ["ethereum"],
-
-        "sprintf": "<b>Ξ</b> <span fgcolor='#d79921'>%s</span>",
-        "markup": "pango"
-    },{
-        "name": "pulseaudio",
-        "instance": "1",
-        "color": "#928374",
-        "min_width": 600,
-        "align": "center",
-
-        "bar_width": 20,
-        "bar_filled": "▰",
-        "bar_empty": "▱",
-        "sprintf": "🔊 <span fgcolor='#d79921'>%s%s</span>",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 10s",
-        "instance": "redshift",
-        "color": "#928374",
-        "min_width": 125,
-        "align": "right",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/redshift.sh",
-
-        "sprintf": "%s",
-        "markup": "pango"
-    },{
-        "name": "command",
-        "cron": "@every 5m",
-        "instance": "archPkgStatus",
-        "color": "#928374",
-        "min_width": 213,
-        "align": "right",
-
-        "command_name": "/home/afreak/go/src/github.com/afreakk/i3statusbear/scripts/archPkgStatus.sh",
-
-        "sprintf": "[%s]",
-        "markup": "pango"
-    }]
+    "modules": [
+        {
+            "name": "command",
+            "cron": "@every 30s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/diskSpace.sh",
+            "command_args": ["/mnt/bigdisk"],
+            "sprintf": "[%s]"
+        },
+        {
+            "name": "command",
+            "cron": "@every 30s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/diskSpace.sh",
+            "command_args": ["/"],
+            "sprintf": "[%s]"
+        },
+        {
+            "name": "command",
+            "cron": "@every 10s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/cryptoprice.sh",
+            "command_args": ["bitcoin"],
+            "sprintf": "₿ %s"
+        },
+        {
+            "name": "command",
+            "cron": "@every 10s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/cryptoprice.sh",
+            "command_args": ["bitcoin-cash"],
+            "sprintf": "bch %s"
+        },
+        {
+            "name": "command",
+            "cron": "@every 10s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/cryptoprice.sh",
+            "command_args": ["ethereum"],
+            "sprintf": "Ξ %s"
+        },
+        {
+            "name": "pulseaudio",
+            "bar_width": 20,
+            "bar_filled": "▰",
+            "bar_empty": "▱",
+            "sprintf": "🔊 %s%s"
+        },
+        {
+            "name": "command",
+            "cron": "@every 10s",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/redshift.sh",
+            "sprintf": "%s"
+        },
+        {
+            "name": "command",
+            "cron": "@every 5m",
+            "command_name": "/home/afreak/go/src/github.com/afreakk/godwmstatus/scripts/archPkgStatus.sh",
+            "sprintf": "[%s]"
+        }
+    ]
 }

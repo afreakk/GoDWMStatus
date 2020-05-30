@@ -20,18 +20,7 @@ type Module struct {
 	CommandName string   `json:"command_name,omitempty"`
 	CommandArgs []string `json:"command_args,omitempty"`
 
-	Color          string `json:"color,omitempty"`
-	Background     string `json:"background,omitempty"`
-	Border         string `json:"border,omitempty"`
-	MinWidth       int    `json:"min_width,omitempty"`
-	Align          string `json:"align,omitempty"`
-	Urgent         bool   `json:"urgent,omitempty"`
-	Separator      bool   `json:"separator,omitempty"`
-	SeparatorWidth int    `json:"separator_block_width,omitempty"`
-	Markup         string `json:"markup,omitempty"`
-
-	Name     string `json:"name,omitempty"`
-	Instance string `json:"instance,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 
 type Config struct {

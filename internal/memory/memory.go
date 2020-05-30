@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
+	"github.com/afreakk/godwmstatus/internal/util"
 )
 
 func Memory(output *protocol.Output, module config.Module) func() {
@@ -45,7 +45,6 @@ func Memory(output *protocol.Output, module config.Module) func() {
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, memMsg)
-	util.ApplyModuleConfigToMessage(module, memMsg)
 	var lastFullText string
 	return func() {
 		memMsg.FullText = formatString()

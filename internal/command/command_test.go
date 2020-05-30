@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
 )
 
 func TestCommand(t *testing.T) {

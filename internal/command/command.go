@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
 )
 
 func Command(output *protocol.Output, module config.Module) func() {
@@ -23,7 +22,6 @@ func Command(output *protocol.Output, module config.Module) func() {
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, cmdMsg)
-	util.ApplyModuleConfigToMessage(module, cmdMsg)
 	var lastFullText string
 	return func() {
 		cmdMsg.FullText = formatString()

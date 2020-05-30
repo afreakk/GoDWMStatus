@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
+	"github.com/afreakk/godwmstatus/internal/util"
 	"github.com/godbus/dbus"
 	"github.com/sqp/pulseaudio"
 )
@@ -71,7 +71,6 @@ func Pulseaudio(output *protocol.Output, module config.Module) error {
 	pulseAudioMsg := &protocol.Message{
 		FullText: formatPulseAudioText(volumes, baseVolume),
 	}
-	util.ApplyModuleConfigToMessage(module, pulseAudioMsg)
 	updatePulseMsg := func(volumes []uint32, baseVolume uint32) {
 		pulseAudioMsg.FullText = formatPulseAudioText(volumes, baseVolume)
 		output.PrintMsgs()

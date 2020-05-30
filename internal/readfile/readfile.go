@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
 )
 
 func Readfile(output *protocol.Output, module config.Module) func() {
@@ -21,7 +20,6 @@ func Readfile(output *protocol.Output, module config.Module) func() {
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, fileMsg)
-	util.ApplyModuleConfigToMessage(module, fileMsg)
 	var lastFullText string
 	return func() {
 		fileMsg.FullText = formatString()

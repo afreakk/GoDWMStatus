@@ -2,15 +2,21 @@ package cpu
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
 
-	"github.com/afreakk/i3statusbear/internal/config"
-	"github.com/afreakk/i3statusbear/internal/protocol"
-	"github.com/afreakk/i3statusbear/internal/util"
+	"github.com/afreakk/godwmstatus/internal/config"
+	"github.com/afreakk/godwmstatus/internal/protocol"
+	"github.com/afreakk/godwmstatus/internal/util"
 )
 
+func printToStderrIfErr(err error) {
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+	}
+}
 func getCPUSample() (idle, total int64, err error) {
 	f, err := os.Open("/proc/stat")
 	if err != nil {
@@ -36,7 +42,7 @@ func getCPUSample() (idle, total int64, err error) {
 			break
 		}
 	}
-	f.Close()
+	printToStderrIfErr(f.Close())
 	return
 }
 
@@ -57,7 +63,6 @@ func Cpu(output *protocol.Output, module config.Module) func() {
 		FullText: formatString(),
 	}
 	output.Messages = append(output.Messages, cpuMsg)
-	util.ApplyModuleConfigToMessage(module, cpuMsg)
 	var lastFullText string
 	return func() {
 		cpuMsg.FullText = formatString()

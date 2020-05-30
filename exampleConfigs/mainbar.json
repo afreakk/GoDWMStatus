@@ -1,27 +1,54 @@
 {
-    "wmclient": "sway",
     "minimum_render_interval": "150ms",
-    "modules": [{
-        "name": "activewindow",
-        "instance": "1",
-        "color": "#928374",
-        "min_width": 1600,
-        "align": "center",
-        "separator": false,
-        "separator_block_width": 1,
-        "markup": "pango",
-        "sprintf": "[<span fgcolor='#d79921'>%s</span>]"
-    },{
-        "name": "datetime",
-        "sprintf": "[<span fgcolor='#d79921'>%s</span>]",
-        "datetime_format": "15:04 2/Jan",
-        "cron": "0 * * * * *",
-        "instance": "1",
-        "color": "#928374",
-        "min_width": 150,
-        "align": "center",
-        "separator": false,
-        "separator_block_width": 1,
-        "markup": "pango"
-    }]
+    "modules": [
+        {
+            "name": "memory",
+            "cron": "@every 5s",
+            "bar_width": 5,
+            "bar_filled": "▰",
+            "bar_empty": "▱",
+            "sprintf": "mem %s%s"
+        },
+        {
+            "name": "cpu",
+            "cron": "@every 5s",
+            "color": "#928374",
+            "bar_width": 5,
+            "bar_filled": "▰",
+            "bar_empty": "▱",
+            "sprintf": "cpu %s%s"
+        },
+        {
+            "name": "readfile",
+            "cron": "@every 5s",
+            "file_path": "/sys/class/thermal/thermal_zone0/temp",
+            "sprintf": "[%.2s]"
+        },
+        {
+            "name": "readfile",
+            "cron": "@every 5s",
+            "file_path": "/sys/class/thermal/thermal_zone1/temp",
+            "sprintf": "[%.2s]"
+        },
+        {
+            "name": "readfile",
+            "cron": "@every 5s",
+            "file_path": "/sys/class/thermal/thermal_zone2/temp",
+            "sprintf": "[%.2s]"
+        },
+        {
+            "name": "pulseaudio",
+            "color": "#928374",
+            "bar_width": 5,
+            "bar_filled": "▰",
+            "bar_empty": "▱",
+            "sprintf": "🔊 %s%s"
+        },
+        {
+            "name": "datetime",
+            "sprintf": "[%s]",
+            "datetime_format": "15:04 2/Jan",
+            "cron": "0 * * * * *"
+        }
+    ]
 }
