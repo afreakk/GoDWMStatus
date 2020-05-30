@@ -22,8 +22,8 @@ go get github.com/afreakk/godwmstatus
 ```
 $GOPATH/bin/godwmstatus $GOPATH/src/github.com/afreakk/godwmstatus/exampleConfigs/bar_example1.json
 ```
-(if no GOPATH is set, it should be in ~/go)
-it will log to stderr if theres any issues
+(if no GOPATH is set, it should be in ~/go)   
+it will log to stderr if theres any issues   
 
-Edit bar config json to match your needs.
-Look at examples to understand how it works.
+Edit bar config json to match your needs.   
+Look at examples to understand how it works.   
