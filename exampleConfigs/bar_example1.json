@@ -15,36 +15,36 @@
             "bar_width": 5,
             "bar_filled": "▰",
             "bar_empty": "▱",
-            "sprintf": "cpu %s%s"
+            "sprintf": " cpu %s%s"
         },
         {
             "name": "readfile",
             "cron": "@every 5s",
             "file_path": "/sys/class/thermal/thermal_zone0/temp",
-            "sprintf": "[%.2s]"
+            "sprintf": " %.2s℃"
         },
         {
             "name": "readfile",
             "cron": "@every 5s",
             "file_path": "/sys/class/thermal/thermal_zone1/temp",
-            "sprintf": "[%.2s]"
+            "sprintf": " %.2s℃"
         },
         {
             "name": "readfile",
             "cron": "@every 5s",
             "file_path": "/sys/class/thermal/thermal_zone2/temp",
-            "sprintf": "[%.2s]"
+            "sprintf": " %.2s℃"
         },
         {
             "name": "pulseaudio",
-            "bar_width": 5,
+            "bar_width": 6,
             "bar_filled": "▰",
             "bar_empty": "▱",
-            "sprintf": "🔊 %s%s"
+            "sprintf": " 🔊 %s%s"
         },
         {
             "name": "datetime",
-            "sprintf": "[%s]",
+            "sprintf": " %s",
             "datetime_format": "15:04 2/Jan",
             "cron": "0 * * * *"
         }

@@ -1,12 +1,12 @@
 # GoDWMStatus
-## Sets DWM status text
+### Works with DWM statusbar
 
 ## Modules
 - command (run bash scripts etc)
-- cpu (usage)
+- cpu (shows usage)
 - datetime
-- memory (usage)
-- pulseaudio (volume bar)
+- memory (shows usage)
+- pulseaudio (volume bar, eventdriven, not polling)
 - readfile (read arbitrary file)
 
 ## Dependency
@@ -15,5 +15,5 @@ And some go packages `go get ./..`
 
 ## Example usage
 ```
-~/go/bin/godwmstatus ~/go/src/github.com/afreakk/godwmstatus/exampleConfigs/mainbar.json i3 2>> ~/log/godwmstatus.log
+~/go/bin/godwmstatus ~/go/src/github.com/afreakk/godwmstatus/exampleConfigs/bar_example1.json 2>> ~/log/godwmstatus.log
 ```
