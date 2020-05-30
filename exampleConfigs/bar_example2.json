@@ -44,7 +44,7 @@
             "name": "datetime",
             "sprintf": "[%s]",
             "datetime_format": "15:04 2/Jan",
-            "cron": "0 * * * *"
+            "cron": "* * * * *"
         }
     ]
 }
