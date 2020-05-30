@@ -45,17 +45,17 @@ func main() {
 		var err error
 		switch module.Name {
 		case "datetime":
-			_, err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
+			err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
 		case "pulseaudio":
 			err = pulseaudio.Pulseaudio(&output, module)
 		case "readfile":
-			_, err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
+			err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
 		case "memory":
-			_, err = c.AddFunc(module.Cron, memory.Memory(&output, module))
+			err = c.AddFunc(module.Cron, memory.Memory(&output, module))
 		case "cpu":
-			_, err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
+			err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
 		case "command":
-			_, err = c.AddFunc(module.Cron, command.Command(&output, module))
+			err = c.AddFunc(module.Cron, command.Command(&output, module))
 		}
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "\nError when initializing module: %s, \nerror: %s\n", module.Name, err.Error())
