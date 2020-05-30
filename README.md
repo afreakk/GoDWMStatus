@@ -1,7 +1,7 @@
 # GoDWMStatus
 ### Works with DWM statusbar
 
-## Modules
+## Modules 
 - command (run bash scripts etc)
 - cpu (shows usage)
 - datetime
@@ -11,9 +11,19 @@
 
 ## Dependency
 X11/Xlib.h
-And some go packages `go get ./..`
++ some go packages (go.mod)
 
-## Example usage
+## Install
 ```
-godwmstatus /path/to/bar_example1.json 2>> ~/log/godwmstatus.log
+go get github.com/afreakk/godwmstatus
 ```
+
+## usage
+```
+$GOPATH/bin/godwmstatus $GOPATH/src/github.com/afreakk/godwmstatus/exampleConfigs/bar_example1.json
+```
+(if no GOPATH is set, it should be in ~/go)
+it will log to stderr if theres any issues
+
+Edit bar config json to match your needs.
+Look at examples to understand how it works.
