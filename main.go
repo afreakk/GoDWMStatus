@@ -13,7 +13,7 @@ import (
 	"github.com/afreakk/godwmstatus/internal/protocol"
 	"github.com/afreakk/godwmstatus/internal/pulseaudio"
 	"github.com/afreakk/godwmstatus/internal/readfile"
-	"github.com/robfig/cron"
+	"github.com/robfig/cron/v3"
 )
 
 func errorExit(str string, code int) {
@@ -45,17 +45,17 @@ func main() {
 		var err error
 		switch module.Name {
 		case "datetime":
-			err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
+			_, err = c.AddFunc(module.Cron, datetime.Datetime(&output, module))
 		case "pulseaudio":
 			err = pulseaudio.Pulseaudio(&output, module)
 		case "readfile":
-			err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
+			_, err = c.AddFunc(module.Cron, readfile.Readfile(&output, module))
 		case "memory":
-			err = c.AddFunc(module.Cron, memory.Memory(&output, module))
+			_, err = c.AddFunc(module.Cron, memory.Memory(&output, module))
 		case "cpu":
-			err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
+			_, err = c.AddFunc(module.Cron, cpu.Cpu(&output, module))
 		case "command":
-			err = c.AddFunc(module.Cron, command.Command(&output, module))
+			_, err = c.AddFunc(module.Cron, command.Command(&output, module))
 		}
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "\nError when initializing module: %s, \nerror: %s\n", module.Name, err.Error())
